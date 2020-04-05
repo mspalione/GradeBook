@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace GradeBook 
 {
-    class Book
+    public class Book
     {
         //Constructor writes like a method, must have the same name as the class, and cannot have a return type.
         public Book(string name)
@@ -18,11 +18,12 @@ namespace GradeBook
             grades.Add(grade);
         }
 
-        public void ShowStatistics()
+        public Statistics GetStatistics()
         {
-            var result = 0.0;
-            var highGrade = double.MinValue;
+            var result = new Statistics();
+            var highGrade = double.MinValue;            
             var lowGrade = double.MaxValue;
+
             foreach(double grade in grades) 
             {
                 if(grade > highGrade) 
@@ -34,13 +35,13 @@ namespace GradeBook
                 {
                     lowGrade = grade;
                 }
-
-                result += grade;
             }
-            var total = grades.Count;
-            var average = grades.Average();
 
-            Console.WriteLine($"Average grade: {average:N2}  \nHighest grade: {highGrade} \nLowest grade: {lowGrade} ");
+            result.Average = grades.Average();
+            result.High = highGrade;
+            result.Low = lowGrade;
+
+            return result;
         }
 
         List<double> grades;

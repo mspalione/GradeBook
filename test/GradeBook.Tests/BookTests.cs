@@ -6,7 +6,7 @@ namespace GradeBook.Tests
     public class BookTests
     {
         [Fact] //[Fact] is an attribute. goes looking for Fact "decorations" to know what to test as pass or fail.
-        public void Test1()
+        public void BookCalculatesAnAverageGrade()
         {
             // arrange all test data and arrange all objects and values that you will use
             var book = new Book("");

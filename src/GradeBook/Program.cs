@@ -12,6 +12,9 @@ namespace GradeBook
         static void Main(string[] args)
         {
             var book = new Book("Scott's gradebook");
+            book.GradeAdded += OnGradeAdded;
+
+
             //loop until q or quit
             Console.WriteLine("Please enter a grade. Type q to quit.");
             var input = Console.ReadLine();
@@ -62,6 +65,11 @@ namespace GradeBook
         End:
             Console.WriteLine("Program complete.");
 
+        }
+
+        static void OnGradeAdded(object sender, EventArgs e)
+        {
+            Console.WriteLine("A grade was added");
         }
     }
 }
